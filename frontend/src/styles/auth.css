@@ -1,25 +1,21 @@
 /* Auth Pages Styling */
 .auth-container {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     min-height: 100vh;
-    padding: 2rem;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 20px;
+    background: var(--bg-gradient);
 }
 
 .auth-card {
     width: 100%;
-    max-width: 450px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 2.5rem;
-    transition: transform 0.3s ease;
-}
-
-.auth-card:hover {
-    transform: translateY(-5px);
+    max-width: 420px;
+    padding: 2rem;
+    border-radius: 16px;
+    background: var(--card-bg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
 }
 
 .auth-header {
@@ -28,87 +24,103 @@
 }
 
 .auth-header h2 {
-    color: #333;
-    font-size: 1.8rem;
+    color: var(--text-primary);
+    font-size: 1.75rem;
+    font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
 .auth-header p {
-    color: #666;
-    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
 }
 
-.auth-form .form-group {
-    margin-bottom: 1.5rem;
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.auth-form label {
+.form-group {
+    position: relative;
+}
+
+.form-group label {
     display: block;
     margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-size: 0.875rem;
     font-weight: 500;
-    color: #555;
 }
 
-.auth-form input[type="text"],
-.auth-form input[type="email"],
-.auth-form input[type="password"],
-.auth-form input[type="tel"] {
+.form-group input:not([type="radio"]) {
     width: 100%;
-    padding: 0.8rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
 }
 
-.auth-form input:focus {
-    border-color: #4a7bff;
+.form-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color-light);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(74, 123, 255, 0.1);
 }
 
-.auth-form .input-error {
-    border-color: #ff4d4f;
+.input-error {
+    border-color: var(--error-color) !important;
 }
 
-.auth-form .error-message {
-    color: #ff4d4f;
-    font-size: 0.85rem;
-    margin-top: 0.3rem;
-}
-
-.alert {
-    padding: 0.8rem 1rem;
-    border-radius: 6px;
-    margin-bottom: 1.5rem;
-    font-size: 0.9rem;
-}
-
-.alert-danger {
-    background-color: #fff2f0;
-    border: 1px solid #ffccc7;
-    color: #ff4d4f;
+.error-message {
+    color: var(--error-color);
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
 }
 
 .role-selector {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
+    margin-top: 0.5rem;
 }
 
 .role-option {
+    flex: 1;
+}
+
+.role-option input[type="radio"] {
+    display: none;
+}
+
+.role-option label {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.role-option input[type="radio"]:checked + label {
+    background: var(--primary-color-light);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .forgot-password {
-    text-align: right;
+    margin: -0.5rem 0 1rem;
 }
 
 .forgot-password a {
-    color: #4a7bff;
-    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-size: 0.875rem;
     text-decoration: none;
+    font-weight: 500;
 }
 
 .forgot-password a:hover {
@@ -116,85 +128,63 @@
 }
 
 .btn {
-    cursor: pointer;
-    padding: 0.8rem 1.5rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: none;
-}
-
-.btn-block {
-    display: block;
     width: 100%;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.btn-primary {
-    background-color: #4a7bff;
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #3a6ae6;
-}
-
-.btn-primary:disabled {
-    background-color: #92adff;
+.btn:disabled {
+    opacity: 0.7;
     cursor: not-allowed;
 }
 
-.auth-footer {
-    margin-top: 1.5rem;
-    text-align: center;
-    color: #666;
-    font-size: 0.9rem;
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--button-text);
 }
 
-.auth-footer a {
-    color: #4a7bff;
-    font-weight: 500;
-    text-decoration: none;
-}
-
-.auth-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Social Login Buttons */
-.social-login {
-    margin-top: 1.5rem;
-}
-
-.separator {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 1.2rem;
-}
-
-.separator::before,
-.separator::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid #ddd;
-}
-
-.separator span {
-    padding: 0 0.8rem;
-    color: #777;
-    font-size: 0.85rem;
+.btn-primary:hover:not(:disabled) {
+    background: var(--primary-color-dark);
 }
 
 .btn-google {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    background-color: white;
-    color: #555;
-    border: 1px solid #ddd;
-    width: 100%;
+    gap: 0.75rem;
+    background: var(--google-button-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    font-weight: 500;
+}
+
+.btn-google:hover:not(:disabled) {
+    background: var(--google-button-hover-bg);
+}
+
+.btn-google svg {
+    flex-shrink: 0;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.auth-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
 }
 
 .btn-google:hover {
